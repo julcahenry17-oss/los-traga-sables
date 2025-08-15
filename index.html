@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Juego de Dados y Preguntas - Líder Juvenil</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: url('c406c70c-3305-46d9-8477-872e37108f37.png') no-repeat center center fixed;
+      background-size: cover;
+      background-attachment: fixed;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #00ffea;
+      text-shadow: 0 0 7px #000;
+      overflow: hidden; /* Evita scroll */
+    }
+
+    #game-container {
+      background: rgba(0, 0, 30, 0.85);
+      border-radius: 15px;
+      width: 600px;
+      max-width: 95%;
+      padding: 25px 30px;
+      box-shadow: 0 0 20px #00ffea;
+    }
+
+    h1 {
+      margin: 0 0 15px;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    #status {
+      font-size: 18px;
+      margin-bottom: 15px;
+      min-height: 40px;
+      text-align: center;
+    }
+
+    #dice-rolls {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-bottom: 20px;
+    }
+
+    .player-roll {
+      background: #001a33;
+      border-radius: 12px;
+      padding: 10px 20px;
+      box-shadow: 0 0 8px #00ffea;
+      text-align: center;
+    }
+
+    #question {
+      font-size: 18px;
+      margin-bottom: 18px;
+      min-height: 70px;
+    }
+
+    .answers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+    }
+
+    .answer-btn {
+      background: #001a33;
+      border: 2px solid #00ffea;
+      border-radius: 12px;
+      color: #00ffea;
+      padding: 12px 15px;
+      flex: 1 1 calc(48%);
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+      user-select: none;
+      font-size: 16px;
+    }
+
+    .answer-btn:hover {
+      background: #00ffea;
+      color: #001a33;
+    }
+
+    #scoreboard {
+      margin-top: 20px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    #next-turn-btn,
+    #roll-btn,
+    #start-btn,
+    #restart-btn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 12px 28px;
+      font-size: 18px;
+      background-color: #00ffea;
+      color: #001a33;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ffea;
+      transition: background-color 0.3s;
+    }
+
+    #next-turn-btn:hover,
+    #roll-btn:hover,
+    #start-btn:hover,
+    #restart-btn:hover {
+      background-color: #00ccbb;
+    }
+
+    input[type="text"] {
+      width: 80%;
+      padding: 10px 12px;
+      font-size: 16px;
+      border-radius: 12px;
+      border: 2px solid #00ffea;
+      background-color: #001a33;
+      color: #00ffea;
+      margin: 8px auto;
+      display: block;
+      text-align: center;
+      box-shadow: 0 0 8px #00ffea inset;
+    }
+
+    label {
+      text-align: center;
+      display: block;
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    /* Ajustes móviles */
+    @media (max-width: 600px) {
+      h1 { font-size: 22px; }
+      #game-container { padding: 15px; }
+      .answer-btn { font-size: 14px; padding: 10px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="game-container">
+    <h1>Juego de Dados y Preguntas - Líder Juvenil</h1>
+    <div id="game-content">
+      <label for="player1-name">Nombre del Jugador 1:</label>
+      <input type="text" id="player1-name" placeholder="Jugador 1" />
+      <label for="player2-name">Nombre del Jugador 2:</label>
+      <input type="text" id="player2-name" placeholder="Jugador 2" />
+      <button id="start-btn">Iniciar Juego</button>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        question: "¿Qué significado tiene para usted “controlar el ego” y cómo cree que influye en nuestras relaciones personales y profesionales?",
+        answers: [
+          "Controlar el ego mejora la comunicación y el respeto mutuo.",
+          "Controlar el ego solo sirve para aparentar.",
+          "El ego no afecta las relaciones.",
+          "Controlar el ego debilita a la persona."
+        ],
+        correct: 0
+      },
+      {
+        question: "¿Qué prácticas o hábitos consideras esenciales para mantener un equilibrio personal entre tu vida profesional, social y emocional?",
+        answers: [
+          "Organización, descanso y comunicación.",
+          "Trabajar sin descanso.",
+          "Evitar socializar para concentrarse más.",
+          "Ignorar emociones para ser más productivo."
+        ],
+        correct: 0
+      },
+      {
+        question: "¿Qué habilidades crees que son imprescindibles para trabajar en equipo de manera efectiva?",
+        answers: [
+          "Comunicación, empatía y responsabilidad.",
+          "Imponer ideas sin escuchar.",
+          "Competir con los demás para destacar.",
+          "Ignorar opiniones ajenas."
+        ],
+        correct: 0
+      },
+      {
+        question: "¿Cuál es la diferencia entre ser responsable por tus acciones y buscar justificarte ante otros?",
+        answers: [
+          "La responsabilidad es aceptar y aprender, la justificación evita asumir errores.",
+          "Justificarse es mejor para evitar problemas.",
+          "Ser responsable es complicado y poco útil.",
+          "No hay diferencia entre ambos."
+        ],
+        correct: 0
+      },
+      {
+        question: "¿Qué cambio pequeño podrías hacer en tu día a día para mantener un ego equilibrado?",
+        answers: [
+          "Escuchar más y hablar menos.",
+          "Ignorar opiniones.",
+          "Buscar siempre ser el centro.",
+          "Evitar trabajar en equipo."
+        ],
+        correct: 0
+      },
+      {
+        question: "¿Qué acción concreta implementarás para mejorar tu equilibrio personal a partir de hoy?",
+        answers: [
+          "Dedicar tiempo a descansar y reflexionar.",
+          "Trabajar sin parar.",
+          "Ignorar emociones.",
+          "Evitar socializar."
+        ],
+        correct: 0
+      },
+      {
+        question: "¿Qué cambio positivo crees que traerá el desapego personal en tu forma de relacionarte con los demás?",
+        answers: [
+          "Más libertad y menos conflictos.",
+          "Desinterés total por otros.",
+          "Aislamiento social.",
+          "Ignorar responsabilidades."
+        ],
+        correct: 0
+      },
+      {
+        question: "¿Cómo crees que puedes contribuir mejor al éxito de un equipo después de lo aprendido?",
+        answers: [
+          "Apoyando y comunicándome mejor.",
+          "Tomando decisiones solo.",
+          "Ignorando al equipo.",
+          "Compitiendo entre miembros."
+        ],
+        correct: 0
+      }
+    ];
+
+    const maxPoints = 5;
+    const gameContent = document.getElementById("game-content");
+    const startBtn = document.getElementById("start-btn");
+
+    let playerScores = [0, 0];
+    let currentPlayer = null;
+    let questionPool = [];
+    let currentQuestionIndex = null;
+    let playerNames = ["Jugador 1", "Jugador 2"];
+
+    startBtn?.addEventListener("click", () => {
+      const p1 = document.getElementById("player1-name").value.trim();
+      const p2 = document.getElementById("player2-name").value.trim();
+      if (!p1 || !p2) {
+        alert("Por favor, ingresa los nombres de ambos jugadores.");
+        return;
+      }
+      playerNames = [p1, p2];
+      startGame();
+    });
+
+    function startGame() {
+      playerScores = [0, 0];
+      currentPlayer = null;
+      questionPool = [...questions.keys()];
+      shuffleArray(questionPool);
+      currentQuestionIndex = null;
+      gameContent.innerHTML = `
+        <div id="status">Los jugadores lanzan el dado para decidir quién empieza.</div>
+        <div id="dice-rolls">
+          <div class="player-roll"><b>${playerNames[0]}</b><br><span id="dice1">-</span></div>
+          <div class="player-roll"><b>${playerNames[1]}</b><br><span id="dice2">-</span></div>
+        </div>
+        <button id="roll-btn">Lanzar dados</button>
+        <div id="scoreboard">
+          <p>${playerNames[0]}: 0 puntos</p>
+          <p>${playerNames[1]}: 0 puntos</p>
+        </div>
+      `;
+      document.getElementById("roll-btn").addEventListener("click", rollDice);
+    }
+
+    function rollDice() {
+      const roll1 = Math.floor(Math.random() * 6) + 1;
+      const roll2 = Math.floor(Math.random() * 6) + 1;
+      document.getElementById("dice1").textContent = roll1;
+      document.getElementById("dice2").textContent = roll2;
+
+      if (roll1 === roll2) {
+        document.getElementById("status").textContent = `Empate con ${roll1}, vuelvan a lanzar.`;
+        return;
+      }
+
+      currentPlayer = roll1 > roll2 ? 0 : 1;
+      document.getElementById("status").textContent = `${playerNames[currentPlayer]} empieza. ¡Es tu turno!`;
+      document.getElementById("roll-btn").style.display = "none";
+      setTimeout(() => askQuestion(), 1500);
+    }
+
+    function shuffleArray(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+    }
+
+    function askQuestion() {
+      if (questionPool.length === 0) {
+        endGame("Se acabaron las preguntas.");
+        return;
+      }
+      currentQuestionIndex = questionPool.pop();
+      const q = questions[currentQuestionIndex];
+      let answersWithIdx = q.answers.map((a, i) => ({ text: a, idx: i }));
+      shuffleArray(answersWithIdx);
+
+      gameContent.innerHTML = `
+        <div id="status">Turno de ${playerNames[currentPlayer]} - Puntos: ${playerNames[0]} = ${playerScores[0]}, ${playerNames[1]} = ${playerScores[1]}</div>
+        <div id="question">${q.question}</div>
+        <div class="answers">
+          ${answersWithIdx.map(a => `<button class="answer-btn" data-idx="${a.idx}">${a.text}</button>`).join('')}
+        </div>
+        <div id="scoreboard">
+          <p>${playerNames[0]}: ${playerScores[0]} puntos</p>
+          <p>${playerNames[1]}: ${playerScores[1]} puntos</p>
+        </div>
+      `;
+      document.querySelectorAll(".answer-btn").forEach(btn => {
+        btn.addEventListener("click", () => handleAnswer(parseInt(btn.dataset.idx)));
+      });
+    }
+
+    function handleAnswer(selectedIdx) {
+      const correctIdx = questions[currentQuestionIndex].correct;
+      if (selectedIdx === correctIdx) {
+        playerScores[currentPlayer]++;
+        gameContent.innerHTML += `<p style="color:#00ff00; font-weight:bold; text-align:center;">¡Respuesta correcta! +1 punto</p>`;
+      } else {
+        gameContent.innerHTML += `<p style="color:#ff0044; font-weight:bold; text-align:center;">Respuesta incorrecta.</p>`;
+      }
+
+      if (playerScores[currentPlayer] >= maxPoints) {
+        setTimeout(() => {
+          endGame(`¡${playerNames[currentPlayer]} ha ganado con ${playerScores[currentPlayer]} puntos!`);
+        }, 1500);
+        return;
+      }
+
+      currentPlayer = currentPlayer === 0 ? 1 : 0;
+      gameContent.innerHTML += `<button id="next-turn-btn">Siguiente turno</button>`;
+      document.getElementById("next-turn-btn").addEventListener("click", askQuestion);
+    }
+
+    function endGame(finalMessage) {
+      gameContent.innerHTML = `
+        <h2>Juego terminado</h2>
+        <p>${finalMessage}</p>
+        <p><b>Resultado final:</b></p>
+        <p>${playerNames[0]}: ${playerScores[0]} puntos</p>
+        <p>${playerNames[1]}: ${playerScores[1]} puntos</p>
+        <button id="restart-btn">Jugar de nuevo</button>
+      `;
+      document.getElementById("restart-btn").addEventListener("click", () => location.reload());
+    }
+  </script>
+</body>
+</html>
