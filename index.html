@@ -153,98 +153,99 @@
 
 <body>
   <div id="game-container">
-    <h1>Juego de Dados y Preguntas - Líder Juvenil</h1>
+    <h1>MINI TEST</h1>
     <div id="game-content">
-      <label for="player1-name">Nombre del Jugador 1:</label>
-      <input type="text" id="player1-name" placeholder="Jugador 1" />
-      <label for="player2-name">Nombre del Jugador 2:</label>
-      <input type="text" id="player2-name" placeholder="Jugador 2" />
-      <button id="start-btn">Iniciar Juego</button>
+      <label for="player1-name">Participante 1:</label>
+      <input type="text" id="player1-name" placeholder="ingrese su nombre" />
+      <label for="player2-name">Participante 2:</label>
+      <input type="text" id="player2-name" placeholder="ngrese su nombre" />
+      <button id="start-btn">Iniciar Test</button>
     </div>
   </div>
 
   <script>
     const questions = [
       {
-        question: "¿Qué significado tiene para usted “controlar el ego” y cómo cree que influye en nuestras relaciones personales y profesionales?",
+        question: "Cuando piensas en tu forma de reaccionar ante un problema, ¿qué te ayuda más: mantener la calma, actuar rápido o reflexionar primero?",
         answers: [
-          "Controlar el ego mejora la comunicación y el respeto mutuo.",
-          "Controlar el ego solo sirve para aparentar.",
-          "El ego no afecta las relaciones.",
-          "Controlar el ego debilita a la persona."
+          "Mantener la calma para analizar la situación.",
+          "Actuar rápido para resolver de inmediato.",
+          "Reflexionar para tomar una decisión más consciente.",
+          "Depende del tipo de problema."
+        ],
+        correct: 3
+      },
+      {
+        question: "Si pudieras cambiar un hábito que te aleja de tu bienestar personal, ¿cuál sería?",
+        answers: [
+          "Dedicar más tiempo a descansar.",
+          "Mejorar mi alimentación.",
+          "Reducir el uso del celular.",
+          "Aprender a decir 'no' sin culpa."
         ],
         correct: 0
       },
       {
-        question: "¿Qué prácticas o hábitos consideras esenciales para mantener un equilibrio personal entre tu vida profesional, social y emocional?",
+        question: "Cuando trabajas en equipo, ¿qué valor crees que aportas más?",
         answers: [
-          "Organización, descanso y comunicación.",
-          "Trabajar sin descanso.",
-          "Evitar socializar para concentrarse más.",
-          "Ignorar emociones para ser más productivo."
+          "Escuchar y apoyar a los demás.",
+          "Proponer ideas creativas.",
+          "Organizar y planificar.",
+          "Resolver conflictos."
         ],
         correct: 0
       },
       {
-        question: "¿Qué habilidades crees que son imprescindibles para trabajar en equipo de manera efectiva?",
+        question: "Si un error te enseña algo importante, ¿cómo lo interpretas?",
         answers: [
-          "Comunicación, empatía y responsabilidad.",
-          "Imponer ideas sin escuchar.",
-          "Competir con los demás para destacar.",
-          "Ignorar opiniones ajenas."
+          "Como una oportunidad para aprender.",
+          "Como una señal para cambiar de rumbo.",
+          "Como un reto que me hace más fuerte.",
+          "Como un recordatorio de que siempre puedo mejorar."
         ],
         correct: 0
       },
       {
-        question: "¿Cuál es la diferencia entre ser responsable por tus acciones y buscar justificarte ante otros?",
+        question: "Cuando alguien te contradice, ¿qué haces primero?",
         answers: [
-          "La responsabilidad es aceptar y aprender, la justificación evita asumir errores.",
-          "Justificarse es mejor para evitar problemas.",
-          "Ser responsable es complicado y poco útil.",
-          "No hay diferencia entre ambos."
+          "Escuchar y tratar de entender su punto.",
+          "Defender mi postura con argumentos.",
+          "Preguntar por qué piensa así.",
+          "Buscar un punto intermedio."
         ],
         correct: 0
       },
       {
-        question: "¿Qué cambio pequeño podrías hacer en tu día a día para mantener un ego equilibrado?",
+        question: "Si tuvieras que definir un cambio pequeño que mejoraría tu vida, ¿cuál elegirías?",
         answers: [
-          "Escuchar más y hablar menos.",
-          "Ignorar opiniones.",
-          "Buscar siempre ser el centro.",
-          "Evitar trabajar en equipo."
+          "Dormir mejor.",
+          "Dedicar más tiempo a mis pasatiempos.",
+          "Pasar más tiempo con personas queridas.",
+          "Reducir el estrés diario."
         ],
         correct: 0
       },
       {
-        question: "¿Qué acción concreta implementarás para mejorar tu equilibrio personal a partir de hoy?",
+        question: "Cuando piensas en soltar algo que te ata emocionalmente, ¿qué sientes?",
         answers: [
-          "Dedicar tiempo a descansar y reflexionar.",
-          "Trabajar sin parar.",
-          "Ignorar emociones.",
-          "Evitar socializar."
+          "Alivio y libertad.",
+          "Miedo a lo desconocido.",
+          "Tristeza temporal.",
+          "Motivación para seguir."
         ],
         correct: 0
       },
       {
-        question: "¿Qué cambio positivo crees que traerá el desapego personal en tu forma de relacionarte con los demás?",
+        question: "Después de aprender algo nuevo sobre ti, ¿qué sueles hacer?",
         answers: [
-          "Más libertad y menos conflictos.",
-          "Desinterés total por otros.",
-          "Aislamiento social.",
-          "Ignorar responsabilidades."
-        ],
-        correct: 0
-      },
-      {
-        question: "¿Cómo crees que puedes contribuir mejor al éxito de un equipo después de lo aprendido?",
-        answers: [
-          "Apoyando y comunicándome mejor.",
-          "Tomando decisiones solo.",
-          "Ignorando al equipo.",
-          "Compitiendo entre miembros."
+          "Aplicarlo para mejorar mi vida.",
+          "Compartirlo con otros.",
+          "Reflexionar más sobre ello.",
+          "Buscar aprender todavía más."
         ],
         correct: 0
       }
+
     ];
 
     const maxPoints = 5;
