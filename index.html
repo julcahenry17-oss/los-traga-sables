@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
-<html lang="es">
+<html lang="es-PE">
+
+
 
 <head>
 
@@ -8,345 +10,145 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Preguntas Guías - El Espejo del Líder Juvenil</title>
+<title>Mini Test de Bienestar Emocional</title>
 
 <style>
 
- /* Tipografía elegante y base */
-
- @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap');
-
-
+ @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
  body {
 
-  margin: 0;
+ margin: 0;
 
-  font-family: 'Open Sans', sans-serif;
+ height: 100vh;
 
-  background: linear-gradient(135deg, #e0f7fa, #80deea);
+ background: #001a33;
 
-  color: #222;
+ font-family: 'Orbitron', sans-serif;
 
-  min-height: 100vh;
+ display: flex;
 
-  display: flex;
+ justify-content: center;
 
-  flex-direction: column;
+ align-items: center;
 
- }
+ color: #00ffea;
 
-
-
- header {
-
-  background: #006064;
-
-  color: #e0f2f1;
-
-  text-align: center;
-
-  padding: 2rem 1rem;
-
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+ text-shadow: 0 0 7px #000;
 
  }
 
- header h1 {
+ #game-container {
 
-  font-family: 'Montserrat', sans-serif;
+ background: rgba(0,0,30,0.85);
 
-  font-weight: 700;
+ border-radius: 15px;
 
-  margin: 0 0 0.3rem;
+ width: 600px;
 
-  font-size: 2.8rem;
+ padding: 25px 30px;
 
-  letter-spacing: 1.2px;
+ box-shadow: 0 0 20px #00ffea;
 
- }
-
- header p {
-
-  font-style: italic;
-
-  font-size: 1.2rem;
-
-  margin: 0;
-
-  color: #b2dfdb;
+ text-align: center;
 
  }
 
+ h1 {
 
+ margin: 0 0 15px;
 
- /* Slider - mantenemos igual que tu original */
-
- .slider {
-
-  margin: 1rem auto;
-
-  overflow: hidden;
-
-  max-width: 95vw;
-
-  border-radius: 10px;
-
-  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-
-  background: #fff;
+ font-size: 30px;
 
  }
 
- .slide-track {
+ #question {
 
-  display: flex;
+ font-size: 20px;
 
-  width: calc(300px * 18);
-
-  animation: scroll 40s linear infinite;
+ margin-bottom: 25px;
 
  }
 
- .slide {
+ .answers {
 
-  height: 100px;
+ display: flex;
 
-  width: 300px;
+ flex-direction: column;
 
-  padding: 0.5rem;
+ gap: 12px;
 
- }
+ max-width: 400px;
 
- .slide img {
-
-  height: 100%;
-
-  width: 100%;
-
-  border-radius: 12px;
-
-  object-fit: cover;
-
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+ margin: 0 auto;
 
  }
 
- @keyframes scroll {
+ .answer-btn {
 
-  0% { transform: translateX(0); }
+ background: #001a33;
 
-  100% { transform: translateX(calc(-300px * 9)); }
+ border: 2px solid #00ffea;
 
- }
+ border-radius: 12px;
 
+ color: #00ffea;
 
+ padding: 15px 20px;
 
- main {
+ cursor: pointer;
 
-  max-width: 1000px;
+ font-size: 16px;
 
-  margin: 2rem auto 3rem;
+ transition: background 0.3s, color 0.3s;
 
-  padding: 0 1rem;
-
-  display: grid;
-
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-
-  gap: 2rem;
+ user-select: none;
 
  }
 
- .emocion {
+ .answer-btn:hover {
 
-  background: #ffffffdd;
+ background: #00ffea;
 
-  padding: 1.6rem 1.8rem;
-
-  border-radius: 16px;
-
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: flex-start;
+ color: #001a33;
 
  }
 
- .emocion:hover {
+ #result {
 
-  transform: translateY(-8px);
+ font-size: 22px;
 
-  box-shadow: 0 14px 30px rgba(0,0,0,0.18);
-
- }
-
- .emocion h2 {
-
-  font-family: 'Montserrat', sans-serif;
-
-  font-weight: 700;
-
-  font-size: 1.3rem;
-
-  color: #004d40;
-
-  margin-bottom: 0.7rem;
-
-  line-height: 1.3;
+ margin-top: 20px;
 
  }
 
- .emocion p {
+ #restart-btn {
 
-  font-size: 1rem;
+ margin-top: 25px;
 
-  line-height: 1.55;
+ padding: 12px 28px;
 
-  color: #333;
+ font-size: 18px;
 
-  flex-grow: 1;
+ background-color: #00ffea;
 
-  text-align: justify; /* Texto justificado */
+ color: #001a33;
 
- }
+ border: none;
 
+ border-radius: 15px;
 
+ cursor: pointer;
 
- /* Sección videos */
+ box-shadow: 0 0 10px #00ffea;
 
- section.videos {
-
-  max-width: 1000px;
-
-  margin: 2rem auto 3rem;
-
-  padding: 0 1rem;
+ transition: background-color 0.3s;
 
  }
 
- section.videos h2 {
+ #restart-btn:hover {
 
-  font-family: 'Montserrat', sans-serif;
-
-  font-weight: 700;
-
-  color: #004d40;
-
-  margin-bottom: 1rem;
-
- }
-
- section.videos ul {
-
-  list-style: none;
-
-  padding: 0;
-
- }
-
- section.videos ul li {
-
-  margin-bottom: 0.8rem;
-
- }
-
- section.videos ul li a {
-
-  color: #006064;
-
-  text-decoration: none;
-
-  font-weight: 600;
-
-  transition: color 0.3s ease;
-
- }
-
- section.videos ul li a:hover,
-
- section.videos ul li a:focus {
-
-  color: #004d40;
-
-  text-decoration: underline;
-
- }
-
-
-
- footer {
-
-  text-align: center;
-
-  padding: 1.2rem;
-
-  background: #004d40;
-
-  color: #b2dfdb;
-
-  font-size: 0.9rem;
-
-  letter-spacing: 0.05em;
-
- }
-
-
-
- /* Responsive */
-
- @media (max-width: 480px) {
-
-  header h1 {
-
-   font-size: 2rem;
-
-  }
-
-  header p {
-
-   font-size: 1rem;
-
-  }
-
-  .slide {
-
-   width: 220px;
-
-   height: 100px;
-
-  }
-
-  .slide-track {
-
-   width: calc(220px * 18);
-
-   animation: scroll 40s linear infinite;
-
-  }
-
-  @keyframes scroll {
-
-   0% { transform: translateX(0); }
-
-   100% { transform: translateX(calc(-220px * 9)); }
-
-  }
-
-  main {
-
-   grid-template-columns: 1fr;
-
-   margin: 1rem auto 2rem;
-
-   gap: 1.5rem;
-
-  }
+ background-color: #00ccbb;
 
  }
 
@@ -354,139 +156,351 @@
 
 </head>
 
+
+
 <body>
 
+ <div id="game-container">
 
+ <h1>Mini Test de Bienestar Emocional</h1>
 
-<header>
-
- <h1>Preguntas Guías de Apertura - Cierre</h1>
-
- <p>El espejo del líder juvenil</p>
-
-</header>
-
-
-
-<div class="slider" aria-label="Carrusel de imágenes sobre emociones y ego">
-
- <div class="slide-track" role="list">
-
-  <div class="slide" role="listitem"><img src="https://www.danielcolombo.com/wp-content/uploads/2019/03/Lucha-de-ego-trabajo-equipo-daniel-colombo.jpg" alt="Persona meditando y luchando contra el ego" /></div>
-
-  <div class="slide" role="listitem"><img src="https://eljacaguero.com.do/wp-content/uploads/2024/09/mujer-con-ego-alto-eljacaguero.jpg" alt="Mujer con expresión de orgullo" /></div>
-
-  <div class="slide" role="listitem"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxz4XUCpAKh55s1VydMBQWv1B2s7lNy_z8BA&s" alt="Persona frustrada con expresión de ira" /></div>
-
-  <div class="slide" role="listitem"><img src="https://img.freepik.com/fotos-premium/egoismo-ego-hombre-egoista-arrogante-corona-considera-mejor-que-otras-personas_556258-4402.jpg" alt="Hombre arrogante con corona" /></div>
-
-  <div class="slide" role="listitem"><img src="https://tn.com.ar/resizer/v2/algunas-personas-tienen-el-ego-muy-elevado-y-se-los-puede-considerar-narcisistas-foto-adobe-stock-7HX53U4BG5CSHMHMSCTNWNPOUY.jpeg?auth=07283e35819b6ed55617d83488ecf45fcf8c6fef962ce3372287b8379a6b9b91&width=767" alt="Persona con ego alto y mirada desafiante" /></div>
-
-  <div class="slide" role="listitem"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPXa70u-rWwe2wUfEkzwXKxwZPNgokNRDYCQ&s" alt="Mujer pensativa y preocupada" /></div>
-
-  <div class="slide" role="listitem"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc5D9bfuXC-LtudTvzqQ4_GtOoz3emU_L54AF5v8ojh_Iooy_mgXW0mKOORpl1sBghdQI&usqp=CAU" alt="Persona mostrando emoción positiva" /></div>
-
-  <div class="slide" role="listitem"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdtces-gR5ZroIiQxrvfazur-2Ooiph3cZ0w&s" alt="Pareja compartiendo amor y empatía" /></div>
-
-
-
-  <!-- Repetición para efecto infinito -->
-
-  <div class="slide" role="listitem"><img src="https://www.danielcolombo.com/wp-content/uploads/2019/03/Lucha-de-ego-trabajo-equipo-daniel-colombo.jpg" alt="Persona meditando y luchando contra el ego" /></div>
-
-  <div class="slide" role="listitem"><img src="https://eljacaguero.com.do/wp-content/uploads/2024/09/mujer-con-ego-alto-eljacaguero.jpg" alt="Mujer con expresión de orgullo" /></div>
-
-  <div class="slide" role="listitem"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxz4XUCpAKh55s1VydMBQWv1B2s7lNy_z8BA&s" alt="Persona frustrada con expresión de ira" /></div>
-
-  <div class="slide" role="listitem"><img src="https://img.freepik.com/fotos-premium/egoismo-ego-hombre-egoista-arrogante-corona-considera-mejor-que-otras-personas_556258-4402.jpg" alt="Hombre arrogante con corona" /></div>
-
-  <div class="slide" role="listitem"><img src="https://tn.com.ar/resizer/v2/algunas-personas-tienen-el-ego-muy-elevado-y-se-los-puede-considerar-narcisistas-foto-adobe-stock-7HX53U4BG5CSHMHMSCTNWNPOUY.jpeg?auth=07283e35819b6ed55617d83488ecf45fcf8c6fef962ce3372287b8379a6b9b91&width=767" alt="Persona con ego alto y mirada desafiante" /></div>
-
-  <div class="slide" role="listitem"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPXa70u-rWwe2wUfEkzwXKxwZPNgokNRDYCQ&s" alt="Mujer pensativa y preocupada" /></div>
-
-  <div class="slide" role="listitem"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc5D9bfuXC-LtudTvzqQ4_GtOoz3emU_L54AF5v8ojh_Iooy_mgXW0mKOORpl1sBghdQI&usqp=CAU" alt="Persona mostrando emoción positiva" /></div>
-
-  <div class="slide" role="listitem"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdtces-gR5ZroIiQxrvfazur-2Ooiph3cZ0w&s" alt="Pareja compartiendo amor y empatía" /></div>
+ <div id="game-content"></div>
 
  </div>
 
-</div>
+
+
+<script>
+
+const questions = [
+
+ {
+
+  question: "¿Cómo te has sentido en general esta semana?",
+
+  answers: [
+
+   { text: "Muy bien", value: 5 },
+
+   { text: "Bien", value: 4 },
+
+   { text: "Normal", value: 3 },
+
+   { text: "Mal", value: 2 },
+
+   { text: "Muy mal", value: 1 }
+
+  ]
+
+ },
+
+ {
+
+  question: "¿Con qué frecuencia has sentido estrés o ansiedad?",
+
+  answers: [
+
+   { text: "Nunca", value: 5 },
+
+   { text: "Rara vez", value: 4 },
+
+   { text: "A veces", value: 3 },
+
+   { text: "Frecuentemente", value: 2 },
+
+   { text: "Siempre", value: 1 }
+
+  ]
+
+ },
+
+ {
+
+  question: "¿Qué tan satisfecho/a estás con tus relaciones personales?",
+
+  answers: [
+
+   { text: "Muy satisfecho/a", value: 5 },
+
+   { text: "Satisfecho/a", value: 4 },
+
+   { text: "Neutral", value: 3 },
+
+   { text: "Insatisfecho/a", value: 2 },
+
+   { text: "Muy insatisfecho/a", value: 1 }
+
+  ]
+
+ },
+
+ {
+
+  question: "¿Cuánto tiempo dedicas a descansar y relajarte diariamente?",
+
+  answers: [
+
+   { text: "Más de 2 horas", value: 5 },
+
+   { text: "1-2 horas", value: 4 },
+
+   { text: "Alrededor de 30 minutos", value: 3 },
+
+   { text: "Menos de 30 minutos", value: 2 },
+
+   { text: "Casi nada", value: 1 }
+
+  ]
+
+ },
+
+ {
+
+  question: "¿Cómo te sientes con respecto a tus objetivos personales y profesionales?",
+
+  answers: [
+
+   { text: "Muy motivado/a", value: 5 },
+
+   { text: "Motivado/a", value: 4 },
+
+   { text: "Indiferente", value: 3 },
+
+   { text: "Desmotivado/a", value: 2 },
+
+   { text: "Muy desmotivado/a", value: 1 }
+
+  ]
+
+ },
+
+ {
+
+  question: "¿Con qué frecuencia te sientes apoyado/a por tus amigos o familia?",
+
+  answers: [
+
+   { text: "Siempre", value: 5 },
+
+   { text: "Casi siempre", value: 4 },
+
+   { text: "A veces", value: 3 },
+
+   { text: "Rara vez", value: 2 },
+
+   { text: "Nunca", value: 1 }
+
+  ]
+
+ },
+
+ {
+
+  question: "¿Qué tan equilibrada consideras tu alimentación y cuidado físico?",
+
+  answers: [
+
+   { text: "Muy equilibrada", value: 5 },
+
+   { text: "Equilibrada", value: 4 },
+
+   { text: "Regular", value: 3 },
+
+   { text: "Poco equilibrada", value: 2 },
+
+   { text: "Nada equilibrada", value: 1 }
+
+  ]
+
+ },
+
+ {
+
+  question: "¿Cómo manejas los conflictos o problemas que surgen en tu vida?",
+
+  answers: [
+
+   { text: "Con calma y buscando solución", value: 5 },
+
+   { text: "Con esfuerzo, pero logro resolverlos", value: 4 },
+
+   { text: "A veces me cuesta manejarlo", value: 3 },
+
+   { text: "Me estreso mucho", value: 2 },
+
+   { text: "Evito enfrentar los problemas", value: 1 }
+
+  ]
+
+ },
+
+ {
+
+  question: "¿Qué tan frecuente realizas actividades que disfrutas y te relajan?",
+
+  answers: [
+
+   { text: "Diariamente", value: 5 },
+
+   { text: "Varias veces a la semana", value: 4 },
+
+   { text: "Algunas veces al mes", value: 3 },
+
+   { text: "Rara vez", value: 2 },
+
+   { text: "Nunca", value: 1 }
+
+  ]
+
+ },
+
+ {
+
+  question: "¿Qué tan conectado/a te sientes contigo mismo/a y tus emociones?",
+
+  answers: [
+
+   { text: "Muy conectado/a", value: 5 },
+
+   { text: "Conectado/a", value: 4 },
+
+   { text: "Neutral", value: 3 },
+
+   { text: "Desconectado/a", value: 2 },
+
+   { text: "Muy desconectado/a", value: 1 }
+
+  ]
+
+ }
+
+];
 
 
 
-<main>
+let currentQuestionIndex = 0;
 
- <div class="emocion">
+let totalScore = 0;
 
-  <h2>1. ¿Qué significado tiene para usted “controlar el ego” y como cree influye en nuestras relaciones personales y profesionales?</h2>
-
-  <p>Controlar el ego significa mantener una percepción equilibrada de uno mismo, sin caer en la ilusión de superioridad ni en la necesidad constante de validación. Según la psicología organizacional, un ego descontrolado puede generar sesgos como la autovalidación excesiva o la ilusión de control, afectando negativamente la colaboración. En lo personal, el ego puede impedir la empatía y fomentar relaciones basadas en la competencia más que en el afecto. En lo profesional, interfiere en la escucha activa, dificulta el trabajo en equipo y reduce la capacidad de adaptación. Practicar la humildad intelectual, reconocer nuestras limitaciones y valorar las contribuciones ajenas son estrategias fundamentales para mitigar el impacto del ego y construir relaciones más sanas y productivas.</p>
-
- </div>
-
- <div class="emocion">
-
-  <h2>2. ¿Cómo puede un líder juvenil gestionar su ego para inspirar y motivar a su grupo sin caer en actitudes autoritarias o arrogantes?</h2>
-
-  <p>Un líder juvenil que gestiona adecuadamente su ego demuestra seguridad sin arrogancia, inspira confianza a través de la autenticidad y fomenta la participación. El liderazgo transformacional destaca la importancia de la empatía y la inteligencia emocional como herramientas para manejar el ego. Es esencial promover un ambiente donde la crítica constructiva sea bienvenida y donde el líder reconozca públicamente los logros del equipo. Al hacerlo, se fortalece la cohesión grupal y se evita el aislamiento que genera un ego desmedido. La autoconciencia constante, la apertura al feedback y la práctica de la humildad son pilares para que un líder motive sin imponerse.</p>
-
- </div>
-
- <div class="emocion">
-
-  <h2>3. ¿Qué técnicas prácticas o ejercicios recomendaría para desarrollar un autocontrol emocional efectivo en situaciones donde el ego pueda entorpecer el juicio o la comunicación?</h2>
-
-  <p>Para controlar el ego y mejorar el autocontrol emocional, se recomiendan técnicas como la meditación mindfulness, que ayuda a observar los pensamientos y emociones sin identificarse con ellos. También es útil el registro emocional, anotando situaciones que desencadenan reacciones egoístas, para analizarlas con perspectiva. El desarrollo de la empatía mediante la escucha activa y el role-playing facilita la comprensión de otras perspectivas, disminuyendo la rigidez del ego. Además, la práctica de la pausa antes de responder en situaciones tensas permite evaluar mejor las consecuencias de nuestras palabras. Estas técnicas, apoyadas por la psicología positiva, contribuyen a un liderazgo y relaciones más conscientes y equilibradas.</p>
-
- </div>
-
- <div class="emocion">
-
-  <h2>4. ¿Cómo influye la cultura y el entorno social en la formación y manifestación del ego en los jóvenes líderes?</h2>
-
-  <p>La cultura y el entorno social son determinantes en la configuración del ego. Sociedades que enfatizan el individualismo tienden a fomentar egos más inflados, mientras que culturas colectivistas promueven la interdependencia y la humildad. En los jóvenes líderes, el entorno familiar, escolar y comunitario modela las expectativas sobre el éxito y el reconocimiento, influyendo en la autoestima y en la necesidad de validación externa. Además, los medios y redes sociales amplifican la comparación social, exacerbando el ego o la inseguridad. Comprender este contexto es vital para diseñar intervenciones que ayuden a los líderes juveniles a desarrollar un ego saludable y resiliente, capaz de adaptarse a los retos sociales sin perder la autenticidad.</p>
-
- </div>
-
- <div class="emocion">
-
-  <h2>5. ¿Qué papel juega la autoconciencia en el equilibrio del ego y cómo puede cultivarse en el proceso de formación de líderes juveniles?</h2>
-
-  <p>La autoconciencia es la base para equilibrar el ego, pues implica un conocimiento profundo de nuestras fortalezas, debilidades y motivaciones. En la formación de líderes juveniles, cultivar la autoconciencia se logra mediante la reflexión crítica, el feedback continuo y actividades que promuevan la introspección, como el journaling o mentorías personalizadas. La neurociencia señala que la práctica repetida de estas actividades fortalece las conexiones neuronales asociadas con la regulación emocional y la empatía. Al desarrollar autoconciencia, los líderes son capaces de reconocer cuándo su ego puede estar influyendo negativamente en sus decisiones o relaciones, permitiéndoles corregir el rumbo y actuar con mayor autenticidad y responsabilidad social.</p>
-
- </div>
-
-</main>
+const maxScorePerQuestion = 5;
 
 
 
-<!-- Sección Videos Recomendados -->
-
-<section class="videos" aria-label="Videos recomendados sobre liderazgo y control del ego">
-
- <h2>Videos Recomendados</h2>
-
- <ul>
-
-  <li><a href="https://youtu.be/k17J1QhN3aI?si=ZsVMwoIDtTJPn7aG" target="_blank" rel="noopener noreferrer">▶ Cómo controlar el ego en el trabajo en equipo</a></li>
-
-  <li><a href="https://youtu.be/cQy8cfAzREs?si=MyZqMRZrFjFG1_Px" target="_blank" rel="noopener noreferrer">▶ Técnicas para mejorar el autocontrol emocional</a></li>
-
-  <li><a href="https://youtu.be/A81-9MU8QFM?si=pw6gyW-ODAqG0Hzj" target="_blank" rel="noopener noreferrer">▶ Liderazgo juvenil y gestión del ego</a></li>
-
- </ul>
-
-</section>
+const gameContent = document.getElementById('game-content');
 
 
 
-<footer>
+function showQuestion() {
 
- &copy; 2025 Te quiero mucho instructora
+ const q = questions[currentQuestionIndex];
 
-</footer>
+ gameContent.innerHTML = `
+
+  <div id="question">${q.question}</div>
+
+  <div class="answers">
+
+   ${q.answers.map((a, i) => `<button class="answer-btn" data-value="${a.value}">${a.text}</button>`).join('')}
+
+  </div>
+
+ `;
 
 
+
+ document.querySelectorAll('.answer-btn').forEach(btn => {
+
+  btn.addEventListener('click', () => {
+
+   const val = parseInt(btn.dataset.value);
+
+   totalScore += val;
+
+   currentQuestionIndex++;
+
+   if(currentQuestionIndex < questions.length){
+
+    showQuestion();
+
+   } else {
+
+    showResult();
+
+   }
+
+  });
+
+ });
+
+}
+
+
+
+function showResult() {
+
+ const maxTotal = questions.length * maxScorePerQuestion;
+
+ const percentage = Math.round((totalScore / maxTotal) * 100);
+
+ let message = '';
+
+
+
+ if (percentage >= 80) {
+
+  message = "¡Te sientes muy bien! Sigue cuidando tu bienestar.";
+
+ } else if (percentage >= 60) {
+
+  message = "Te sientes bien, pero siempre puedes mejorar algunos aspectos.";
+
+ } else if (percentage >= 40) {
+
+  message = "Parece que estás pasando por momentos difíciles. Considera buscar apoyo.";
+
+ } else {
+
+  message = "Tu bienestar está bajo. No dudes en hablar con alguien de confianza.";
+
+ }
+
+
+
+ gameContent.innerHTML = `
+
+  <div id="result">
+
+   <p>Tu bienestar emocional es: <b>${percentage}%</b></p>
+
+   <p>${message}</p>
+
+   <button id="restart-btn">Volver a empezar</button>
+
+  </div>
+
+ `;
+
+
+
+ document.getElementById('restart-btn').addEventListener('click', () => {
+
+  currentQuestionIndex = 0;
+
+  totalScore = 0;
+
+  showQuestion();
+
+ });
+
+}
+
+
+
+// Inicio del test
+
+showQuestion();
+
+</script>
 
 </body>
 
